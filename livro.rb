@@ -4,7 +4,16 @@ class Livro
         @titulo = titulo
         @preco = preco
         @ano_lancamento = ano_lancamento
-        @preco *= 0.7 if ano_lancamento < 2000
+        @preco = calcula_preco(preco)
+    end
+    private
+
+    def calcula_preco(base)
+        if @ano_lancamento < 2000
+            base * 0.7
+        else
+            base
+        end
     end
 end
 
