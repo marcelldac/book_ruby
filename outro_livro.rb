@@ -11,44 +11,36 @@ class Livro
   end
 end
 
+module Contador
+  def <<(livro)
+    push(livro)
+    if @maximo_necessario.nil? || @maximo_necessario < size
+      @maximo_necessario = size
+    end
+    self
+  end
+  attr_reader :maximo_necessario
+end
+
 class Estoque
   attr_reader :livros
   def initialize
     @livros = []
-
-
-    def @livros.<<(livro)
-      push(livro)
-      if @maximo_necessario.nil? || @maximo_necessario < size
-        @maximo_necessario = size
-      end
-      self
-    end
-
-    def @livros.maximo_necessario
-      @maximo_necessario
-    end
-
+    @livros.extend Contador
   end
-
-
-
   def exporta_csv
     @livros.each do |livro|
       puts "#{livro.titulo},#{livro.ano_lancamento},#{livro.preco}"
     end
   end
-
   def mais_baratos_que(valor)
     @livros.select do |livro|
       livro.preco <= valor
     end
   end
-
   def total
     @livros.size
   end
-
   def adiciona(livro)
     @livros << livro if livro
   end
