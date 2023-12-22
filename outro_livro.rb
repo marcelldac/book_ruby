@@ -15,6 +15,8 @@ class Estoque
   attr_reader :livros
   def initialize
     @livros = []
+
+
     def @livros.<<(livro)
       push(livro)
       if @maximo_necessario.nil? || @maximo_necessario < size
@@ -22,11 +24,14 @@ class Estoque
       end
       self
     end
+
+    def @livros.maximo_necessario
+      @maximo_necessario
+    end
+
   end
 
-  def @livros.maximo_necessario
-    @maximo_necessario
-  end
+
 
   def exporta_csv
     @livros.each do |livro|
