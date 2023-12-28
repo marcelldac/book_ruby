@@ -41,8 +41,15 @@ class Estoque
   def total
     @livros.size
   end
-  def adiciona(livro)
+  def <<(livro)
     @livros << livro if livro
+    self
+  end
+  def remove(livro)
+    @livros.delete livro
+  end
+  def maximo_necessario
+    @livros.maximo_necessario
   end
 end
 
@@ -56,5 +63,14 @@ estoque.livros << algoritmos << arquitetura
 puts estoque.livros.maximo_necessario
 estoque.livros << programmer << ruby
 puts estoque.livros.maximo_necessario
-estoque.livros.delete algoritmos
+estoque.livros.remove algoritmos
 puts estoque.livros.maximo_necessario
+
+# numbers = []
+# numbers.extend Contador
+# numbers << 13
+# puts numbers.maximo_necessario
+# numbers << 15
+# puts numbers.maximo_necessario
+# numbers << 17 << 19
+# puts numbers.maximo_necessario
